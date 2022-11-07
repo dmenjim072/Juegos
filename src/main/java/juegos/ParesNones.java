@@ -17,7 +17,7 @@ public class ParesNones {
         int numMaquina = 0;
         int sumaDedos = 0;
         String menuInicial = "";
-        String menuParesNones = "";
+        String menuParesNones;
         final int MINIMO = 1;
         final int MAXIMO = 5;
         
@@ -32,14 +32,14 @@ public class ParesNones {
             if (menuInicial.equalsIgnoreCase("jugar")) {
                            
                 //llamamos al metodo para elegir pares o nones
-                menuParesNones = mostrarMenuParesNones(menuParesNones);
+                menuParesNones = mostrarMenuParesNones();
                 
                 //hacemos la condicion para que avance al siguiente menu
                 if (menuParesNones.equalsIgnoreCase("pares")
                         ||menuParesNones.equalsIgnoreCase("nones")){
                     
                     //llamamos al metodo para elegir el numero de dedos
-                    menuDedos = mostrarMenuDedos(menuDedos);
+                    menuDedos = mostrarMenuDedos();
                     
                     //hacemos la condicion para que avance
                     if (menuDedos>=1 && menuDedos<=5){
@@ -74,27 +74,32 @@ public class ParesNones {
     }
 
     //metodo para eleccion de pares o nones con bucle
-    public static String mostrarMenuParesNones(String menuParesNones) {
-
+    public static String mostrarMenuParesNones() {
+        
+        String menuParesNones;
         do{
             menuParesNones = JOptionPane.showInputDialog("Introduce PARES si quieres ser pares \n"
                 + "Introduce NONES si quieres ser nones \n"
                 + "Introduce SALIR si quieres salir");
          
-            return menuParesNones;
-        }while(!menuParesNones.equalsIgnoreCase("salir"));
+            
+        }while(!menuParesNones.equalsIgnoreCase("pares")
+                && !menuParesNones.equalsIgnoreCase("nones"));
+        return menuParesNones;
     }
 
     //metodo para eleccion dedos jugador
-    public static int mostrarMenuDedos(int menuDedos) {
+    public static int mostrarMenuDedos() {
 
+        int menuDedos;
         do{
             String menuDedosString = JOptionPane.showInputDialog
             ("Introduce el numero de dedos (1 - 5): ");
             menuDedos = Integer.parseInt(menuDedosString);
 
-            return menuDedos;
+            
         }while(menuDedos<1 || menuDedos>5);
+        return menuDedos;
     }
     
     //metodo para dedos maquina aleatorio
