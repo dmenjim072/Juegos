@@ -14,22 +14,29 @@ public class Morra {
         //Declaramos variables
         String menuPrincipal = "";
         int numeroDedos = 0;
-        
+        int numeroDedosTotal = 0;
         //llamamos al metodo menu principal
-        mostrarMenuPrincipal(menuPrincipal);
+        menuPrincipal = mostrarMenuPrincipal();
         
         if(menuPrincipal.equalsIgnoreCase("jugar")){
             
             //llamamos al metodo para elegir dedos
             numeroDedos = mostrarEleccionDedos();
             
+            if (numeroDedos>=1 && numeroDedos<=5){
+                
+                numeroDedosTotal = mostrarEleccionDedosTotal();
+                
             }
+            
+        }
         
     }
     
     
-    public static String mostrarMenuPrincipal(String menuPrincipal){
+    public static String mostrarMenuPrincipal(){
         
+        String menuPrincipal;
         do{
             menuPrincipal = JOptionPane.showInputDialog("MENU PRINCIPAL \n"
                 + "---------------------------- \n"
@@ -41,23 +48,17 @@ public class Morra {
         
         return menuPrincipal;
     }
-    
-    public static boolean validarMenuPrincipal(String menuPrincipal){
-        
-        return menuPrincipal.equalsIgnoreCase("jugar") ||
-                menuPrincipal.equalsIgnoreCase("salir");
-    }
-    
-    
-
-    
+                   
     public static int mostrarEleccionDedos(){
         
         int numeroDedos;
         
-        String eleccionDedosString = JOptionPane.showInputDialog
-        ("Elige el numero de dedos para sacar");
-        numeroDedos = Integer.parseInt(eleccionDedosString);
+        do{
+            String eleccionDedosString = JOptionPane.showInputDialog
+            ("Elige el numero de dedos para sacar (1 - 5)");
+            numeroDedos = Integer.parseInt(eleccionDedosString);
+            
+        }while(numeroDedos)
         
         return numeroDedos;
     }
@@ -67,7 +68,7 @@ public class Morra {
         int numeroDedosTotal;
         
         String eleccionDedosTotalString = JOptionPane.showInputDialog
-        ("Introduce el numero de dedos que crees que habrá en total");
+        ("Introduce el numero de dedos que crees que habrá en total (2 - 10");
         numeroDedosTotal = Integer.parseInt(eleccionDedosTotalString);
         
         return numeroDedosTotal;
