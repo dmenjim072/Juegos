@@ -115,8 +115,7 @@ public class Morra {
     public static void mostrarResultado(int numeroDedos, int dedosMaquina, int numeroDedosTotal, int dedosMaquinaTotal){
         
         
-        String resultado = """
-                           
+        String resultado = """                          
                            El jugador ha sacado  %d
                            La maquina ha sacado  %d
                            El jugador ha dicho   %d
